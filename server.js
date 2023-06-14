@@ -1,5 +1,6 @@
 import express, { json } from "express";
 import mongoose from "mongoose";
+import RegistrationRouter from "./routes/register.js";
 
 const app = express();
 const PORT = 3000;
@@ -23,3 +24,4 @@ mongoose
 app.get("/", (req, res) => {
 	res.send("Hello HOPE");
 });
+app.use("/register", RegistrationRouter);
