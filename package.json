@@ -1,0 +1,27 @@
+{
+	"name": "seniorbackenddevassessment",
+	"version": "1.0.0",
+	"description": "I had a look through the requirements of the user stories and aimed to create an initial schema for both the teacher and student objects Take a look at the image below: <details> <summary>Initial Schema</summary>",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "nodemon server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/arhussain1/SeniorBackendDevAssessment.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/arhussain1/SeniorBackendDevAssessment/issues"
+	},
+	"homepage": "https://github.com/arhussain1/SeniorBackendDevAssessment#readme",
+	"dependencies": {
+		"express": "^4.18.2",
+		"mongoose": "^7.2.4",
+		"nodemon": "^2.0.22"
+	}
+}
