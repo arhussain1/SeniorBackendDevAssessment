@@ -1,6 +1,7 @@
 import express, { json } from "express";
 import mongoose from "mongoose";
 import RegistrationRouter from "./routes/register.js";
+import CommonStudentsRouter from "./routes/commonStudents.js";
 
 const app = express();
 const PORT = 3000;
@@ -25,3 +26,4 @@ app.get("/", (req, res) => {
 	res.send("Hello HOPE");
 });
 app.use("/register", RegistrationRouter);
+app.use("/commonstudents", CommonStudentsRouter);
