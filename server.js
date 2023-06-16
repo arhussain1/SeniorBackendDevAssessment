@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import RegistrationRouter from "./routes/register.js";
 import CommonStudentsRouter from "./routes/commonStudents.js";
 import SuspendStudentRouter from "./routes/suspendStudent.js";
+import RetrieveStudentsRouter from "./routes/retrieveStudents.js";
 
 const app = express();
 const PORT = 3000;
@@ -29,3 +30,4 @@ app.get("/", (req, res) => {
 app.use("/register", RegistrationRouter);
 app.use("/commonstudents", CommonStudentsRouter);
 app.use("/suspend", SuspendStudentRouter);
+app.use("/retrievefornotifications", RetrieveStudentsRouter);
