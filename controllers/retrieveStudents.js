@@ -4,39 +4,48 @@ import Teacher from "../models/teacher.js";
 
 const RetrieveStudentsController = {
 	retrieveStudents: async (req, res) => {
-		// begin with only getting students who fulfil the following conditions
+		// Complete this solution by adding the ability to detect @mentions
+		// conditions:
 		// are registered to the teacher
 		// and are not suspended
+		// include emails of @mentions students
+
+		// add a function to accept notifiction and return List of emails from @mentions
 
 		const { teacher: teacherEmail, notification } = req.body;
 
+		// this student map will handle ensuring unique values for students
+		const studentsMap = new Map();
+
 		// Get teacher id
 		const teacher = await Teacher.findOne({ email: teacherEmail });
-		// get registered students
-		const allRegisteredStudents = await Registration.find({
+
+		// get teachers registered students
+		const registrations = await Registration.find({
 			teacherId: teacher._id,
 		});
 
-		// get all non suspended students emails
-		const availableStudentEmailPromises = allRegisteredStudents.map(
-			async (registration) => {
+		// Add all student emails and their suspension status to the student map
+		await Promise.all(
+			registrations.map(async (registration) => {
 				const student = await Student.findOne({ _id: registration.studentId });
-				if (student && student.isSuspended === false) {
-					return student.email;
-				}
-			}
+				studentsMap.set(student.email, student.isSuspended);
+			})
 		);
 
-		const availableStudentEmails = await Promise.all(
-			availableStudentEmailPromises
-		);
+		// have some function that extracts @mention emails
 
-		// remove undefined
-		const filteredStudentEmails = availableStudentEmails.filter(
-			(email) => email !== undefined
-		);
+		// search Students for those emails and add the info to the map
 
-		res.status(200).json({ recipients: filteredStudentEmails });
+		// return available students array
+		let availableStudents = new Array();
+
+		studentsMap.forEach((isSuspended, email) => {
+			console.log(isSuspended, email);
+			if (isSuspended === false) availableStudents.push(email);
+		});
+
+		res.status(200).json({ recipients: availableStudents });
 	},
 };
 
