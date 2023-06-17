@@ -10,9 +10,9 @@ const SuspendStudentController = {
 		// then run a look up via registrations and verify the teacher is related
 		// to the student then process the suspension request
 
-		const { student: studentEmail } = req.body;
-
 		try {
+			const { student: studentEmail } = req.body;
+
 			await Student.findOneAndUpdate(
 				{ email: studentEmail },
 				{ isSuspended: true }
@@ -20,7 +20,12 @@ const SuspendStudentController = {
 
 			res.sendStatus(204);
 		} catch (error) {
-			res.status(500).json({ message: error.message });
+			res
+				.status(500)
+				.json({
+					message: "An error occurred while suspending the student.",
+					error: error.message,
+				});
 		}
 	},
 };
