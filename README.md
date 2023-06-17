@@ -157,8 +157,20 @@ Retrieve a list of students who can receive a given notification from a teacher.
   ]
 }
 ```
+<br/><br/>
+## Error Responses
+For all the API endpoints, error responses should:
 
-
+- Have an appropriate HTTP response code
+- Have a JSON response body containing a meaningful error message. For example:
+```json
+{
+  "message": "Some meaningful error message"
+}
+```
+<br/><br/>
+## Additional Error Logs
+The API endpoints also return additional error logs that can be found under the **'error'** key in the response object
 
 
 
