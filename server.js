@@ -27,7 +27,7 @@ mongoose
 app.get("/", (req, res) => {
 	res.send("Hello HOPE");
 });
-app.use("/register", RegistrationRouter);
-app.use("/commonstudents", CommonStudentsRouter);
-app.use("/suspend", SuspendStudentRouter);
-app.use("/retrievefornotifications", RetrieveStudentsRouter);
+app.use("/api/register", RegistrationRouter);
+app.use("/api/commonstudents", CommonStudentsRouter);
+app.use("/api/suspend", SuspendStudentRouter);
+app.use("/api/retrievefornotifications", RetrieveStudentsRouter);
