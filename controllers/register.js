@@ -47,7 +47,12 @@ const RegisterController = {
 
 			res.sendStatus(204);
 		} catch (error) {
-			res.status(500).json({ message: error.message });
+			res
+				.status(500)
+				.json({
+					message: "An error occurred while registering students.",
+					error: error.message,
+				});
 		}
 	},
 };
