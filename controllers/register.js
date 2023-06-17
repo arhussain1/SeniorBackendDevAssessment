@@ -4,16 +4,15 @@ import Teacher from "../models/teacher.js";
 
 const RegisterController = {
 	registerStudents: async (req, res) => {
-		const { teacher: teacherEmail, students: studentEmails } = req.body;
-
 		try {
+			const { teacher: teacherEmail, students: studentEmails } = req.body;
+
 			// check to see if the teacher exists if not create them
 			const foundTeacher = await Teacher.findOne({ email: teacherEmail });
 			let teacherId;
 			if (foundTeacher) {
 				teacherId = foundTeacher._id;
 			} else {
-				console.log("I did not find your teacher so I create");
 				const createdTeacher = await Teacher.create({ email: teacherEmail });
 				teacherId = createdTeacher._id;
 			}
@@ -27,7 +26,6 @@ const RegisterController = {
 				if (foundStudent) {
 					return foundStudent._id;
 				} else {
-					console.log("I did not find your student so I create");
 					const createdStudent = await Student.create({ email: studentEmail });
 					return createdStudent._id;
 				}
