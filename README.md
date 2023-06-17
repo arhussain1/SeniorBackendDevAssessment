@@ -41,6 +41,10 @@ npm install
 ```
 3. Set up the MongoDB connection by updating the configuration file located at `config/database.js` with your MongoDB connection details.
 It is currently set to `mongodb://localhost:27017/mydatabase`
+4. Start the API Server
+```
+npm start
+```
 
 ## API Endpoints
 
